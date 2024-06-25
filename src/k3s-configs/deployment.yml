@@ -1,0 +1,272 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: session-service
+  name: session-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: session-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: session-service
+    spec:
+      containers:
+      - image: zoranashura402/session
+        imagePullPolicy: IfNotPresent
+        name: session-service
+        envFrom:
+          - configMapRef:
+              name: session-config
+          - configMapRef:
+              name: general-config
+          - secretRef:
+              name: postgres-secret
+        command: ["java", "-jar", "/app/app.jar"]
+        ports:
+        - containerPort: 8081
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: hotel-service
+  name: hotel-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: hotel-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: hotel-service
+    spec:
+      containers:
+      - image: zoranashura402/hotel-service
+        imagePullPolicy: IfNotPresent
+        name: hotel-service
+        envFrom:
+          - configMapRef:
+              name: hotel-config
+          - configMapRef:
+              name: general-config
+          - secretRef:
+              name: postgres-secret
+        command: ["java", "-jar", "/app/app.jar"]
+        ports:
+        - containerPort: 8082
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: booking-service
+  name: booking-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: booking-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: booking-service
+    spec:
+      containers:
+      - image: zoranashura402/booking
+        imagePullPolicy: IfNotPresent
+        name: booking-service
+        envFrom:
+          - configMapRef:
+              name: booking-config
+          - configMapRef:
+              name: general-config
+          - configMapRef:
+              name: services-ports
+          - configMapRef:
+              name: rabbitmq
+          - secretRef:
+              name: postgres-secret
+        command: ["java", "-jar", "/app/app.jar"]
+        ports:
+        - containerPort: 8083
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: payment-service
+  name: payment-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: payment-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: payment-service
+    spec:
+      containers:
+      - image: zoranashura402/payment-service
+        imagePullPolicy: IfNotPresent
+        name: payment-service
+        envFrom:
+          - configMapRef:
+              name: general-config
+          - configMapRef:
+              name: payment-config
+          - secretRef:
+              name: postgres-secret
+        command: ["java", "-jar", "/app/app.jar"]
+        ports:
+          - containerPort: 8084
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: loyalty-service
+  name: loyalty-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: loyalty-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: loyalty-service
+    spec:
+      containers:
+      - image: zoranashura402/loyalty-service
+        imagePullPolicy: IfNotPresent
+        name: loyalty-service
+        envFrom:
+          - configMapRef:
+              name: general-config
+          - configMapRef:
+              name: loyalty-config
+          - secretRef:
+              name: postgres-secret
+        command: ["java", "-jar", "/app/app.jar"]
+        ports:
+        - containerPort: 8085
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: report-service
+  name: report-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: report-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: report-service
+    spec:
+      containers:
+      - image: zoranashura402/report
+        imagePullPolicy: IfNotPresent
+        name: report-service
+        envFrom:
+          - configMapRef:
+              name: report-config
+          - configMapRef:
+              name: general-config
+          - configMapRef:
+              name: rabbitmq
+          - secretRef:
+              name: postgres-secret
+        command: ["java", "-jar", "/app/app.jar"]
+        ports:
+        - containerPort: 8086
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: gateway-service
+  name: gateway-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: gateway-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: gateway-service
+    spec:
+      containers:
+      - image: zoranashura402/gateway
+        imagePullPolicy: IfNotPresent
+        name: gateway-service
+        envFrom:
+          - configMapRef:
+              name: services-ports
+        command: ["java", "-jar", "/app/app.jar"]
+        ports:
+        - containerPort: 8087
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: message-queue
+  name: message-queue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: message-queue
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: message-queue
+    spec:
+      containers:
+      - image: rabbitmq:3-management-alpine
+        imagePullPolicy: IfNotPresent
+        name: message-queue
+        ports:
+        - containerPort: 5672
