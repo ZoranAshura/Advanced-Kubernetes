@@ -10,3 +10,7 @@
 
 #### 3. Connect the nodes to the cluster using the k3s server command and the -token and --server flags for worker and master nodes respectively. When k3s is installed, the environment variable NODE_TOKEN can be used.
 ![1.4](./images/part_1/1.4.png)
+
+#### 4. Install the Ingress Controller Nginx instead of the default one. You can use the official nginx-based ingress controller manifest file available on GitHub.
+![1.5](./images/part_1/1.5.png)
+![1.6](./images/part_1/1.6.png)
