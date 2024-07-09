@@ -14,3 +14,12 @@
 #### 4. Install the Ingress Controller Nginx instead of the default one. You can use the official nginx-based ingress controller manifest file available on GitHub.
 ![1.5](./images/part_1/1.5.png)
 ![1.6](./images/part_1/1.6.png)
+
+#### 4.1. I'll use metallb in order to get an exertnal ip address for my ingress service (bare-metal)
+![1.7](./images/part_1/1.7.png)
+> Let's test it 
+
+![1.8](./images/part_1/1.8.png)
+![1.9](./images/part_1/1.9.png)
+![1.10](./images/part_1/1.10.png)
+> You can find all configs in src/metallb directory  
