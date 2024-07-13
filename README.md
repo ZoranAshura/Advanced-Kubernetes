@@ -23,3 +23,29 @@
 ![1.9](./images/part_1/1.9.png)
 ![1.10](./images/part_1/1.10.png)
 > You can find all configs in src/metallb directory  
+
+#### 5. Get a domain name and configure the cert-manager utility inside the cluster, which should generate a wildcard certificate for the obtained domain
+1. Create a Certificate Authority
+    a. Create a CA private key
+    ```bash
+    openssl genrsa -out ca.key 4096
+    ```
+    b. Create a CA certificate
+    ```bash
+    openssl req -new -x509 -sha256 -days 365 -key ca.key -out ca.crt
+    ```
+    c. Import the CA certificate in the `trusted Root Ca store` of your clients
+2. Convert the content of the key and crt to base64 oneline
+    ```bash
+    cat ca.crt | base64 -w 0
+    cat ca.key | base64 -w 0
+    ```
+3. Create a secret object `nginx1-ca-secret.yml` and put in the key and crt content
+4. Create a cluster issuer object `nginx1-clusterissuer.yml`
+5. Create a new certificate `nginx1-cert.yml` for your projects
+6. Add a `tls` reference in your ingress `nginx1-ingress.yml`
+![1.8](./images/part_1/1.11.png)
+![1.8](./images/part_1/1.13.png)
+![1.8](./images/part_1/1.12.png)
+
+#### 6. So let's set up ingress and certmanager for our microservice application
