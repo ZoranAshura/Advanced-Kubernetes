@@ -49,3 +49,19 @@
 ![1.8](./images/part_1/1.12.png)
 
 #### 6. So let's set up ingress and certmanager for our microservice application
+![1.8](./images/part_1/1.14.png)
+![1.8](./images/part_1/1.15.png)
+![1.8](./images/part_1/1.16.png)
+![1.8](./images/part_1/1.17.png)
+
+#### 7. Install and run Prometheus Operator to collect metrics in the system. Add the result of the kubectl get pods -n monitoringcommand in the report
+1. Clone the Prometheus Operator repository
+![1.8](./images/part_1/1.18.png)
+2. Create the namespace and CRDs, and then wait for them to be availble before creating the remaining resources
+```bash
+  sudo kubectl create -f manifests/setup
+  until sudo kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
+  sudo kubectl create -f manifests/
+```
+3. Get created resources
+![1.8](./images/part_1/1.19.png)

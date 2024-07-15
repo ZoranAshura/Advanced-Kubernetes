@@ -8,4 +8,5 @@ spec:
     name: nginx1-clusterissuer
     kind: ClusterIssuer
   dnsNames:
-    - somebody.com
+    - session-service.k
+    - gateway-service.k

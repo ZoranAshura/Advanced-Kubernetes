@@ -50,7 +50,7 @@ spec:
             name: test-nginx-service
             port:
               number: 80
-  tls:
-  - hosts:
-    - somebody.com
-    secretName: nginx1-tls-secret
+                #  tls:
+                # - hosts:
+                #  - somebody.com
+                # secretName: nginx1-tls-secret
