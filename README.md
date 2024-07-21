@@ -65,3 +65,24 @@
 ```
 3. Get created resources
 ![1.8](./images/part_1/1.19.png)
+
+
+## Part 2. Deploying an application using Kustomize
+
+#### 1. Create a deployment project skeleton with one base configuration and one overlay configuration (production):
+![1.8](./images/part_2/2.1.png)
+
+#### 2. Write base and overlay configurations for kustomize. Specify services and deployments in the base, and add specific secrets and configuration values in the production.
+![1.8](./images/part_2/2.2.png)
+![1.8](./images/part_2/2.3.png)
+
+#### 3. Create replicas-patch.yaml for the production overlay, which modifies the number of replicas for the gateway service deployment to 3 replicas.
+![1.8](./images/part_2/2.4.png)
+
+#### 4. Build the resulting configuration file, taking into account the production overlay.
+![1.8](./images/part_2/2.5.png)
+![1.8](./images/part_2/2.6.png)
+
+#### 5. Run postman functional tests and make sure that the application works.
+![1.8](./images/part_2/2.7.png)
+![1.8](./images/part_2/2.8.png)

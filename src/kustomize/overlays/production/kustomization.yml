@@ -1,0 +1,8 @@
+bases:
+  - ../../base
+  - configMap.yml
+  - secrets-postgres.yml
+
+patchesStrategicMerge:
+  - replicas-patch.yml
+ 

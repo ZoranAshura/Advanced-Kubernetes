@@ -1,0 +1,9 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: gateway-service
+  name: gateway-service
+spec:
+  replicas: 3
