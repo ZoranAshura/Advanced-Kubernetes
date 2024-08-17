@@ -86,3 +86,24 @@
 #### 5. Run postman functional tests and make sure that the application works.
 ![1.8](./images/part_2/2.7.png)
 ![1.8](./images/part_2/2.8.png)
+
+## Part 3. Deploying an application using Helm
+
+#### 1. Create helm charts and templates for your application with the helm create command. This command will create a basic chart structure with templates for the resources: deployment, service and ingress.
+![1.8](./images/part_3/3.1.png)
+![1.8](./images/part_3/3.2.png)
+
+#### 2. Pack the helm chart using the helm package command to create a *.tgz file containing the chart and its dependencies.
+![1.8](./images/part_3/3.3.png)
+
+#### 3. Deploy helm chart in the Kubernetes cluster using the helm install command. Specify an arbitrary namespace and release-name.
+![1.8](./images/part_3/3.4.png)
+
+#### 4. Check the status of the deployed application with the kubectl get command. Add the results in the report.
+![1.8](./images/part_3/3.5.png)
+
+#### 5. Make at least one change to values.yaml and run the helm upgrade command.
+![1.8](./images/part_3/3.6.png)
+
+#### 6. Run postman functional tests and make sure that the application works.
+![1.8](./images/part_3/3.7.png)

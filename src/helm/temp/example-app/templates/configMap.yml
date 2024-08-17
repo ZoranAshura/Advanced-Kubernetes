@@ -1,0 +1,88 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: general-config
+data:
+  POSTGRES_HOST: db
+  POSTGRES_PORT: "5432"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: session-config
+data:
+  POSTGRES_DB: users_db
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hotel-config
+data:
+  POSTGRES_DB: hotels_db
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: payment-config
+data:
+  POSTGRES_DB: payments_db
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: loyalty-config
+data:
+  POSTGRES_DB: balances_db
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rabbitmq
+data:
+  RABBIT_MQ_HOST: message-queue
+  RABBIT_MQ_PORT: "5672"
+  RABBIT_MQ_USER: guest
+  RABBIT_MQ_PASSWORD: guest
+  RABBIT_MQ_QUEUE_NAME: messagequeue
+  RABBIT_MQ_EXCHANGE: messagequeue-exchange
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: report-config
+data:
+  POSTGRES_DB: statistics_db
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: booking-config
+data:
+  POSTGRES_DB: reservations_db
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: services-ports
+data:
+  SESSION_SERVICE_HOST: session-service
+  SESSION_SERVICE_PORT: "8081"
+  HOTEL_SERVICE_HOST: hotel-service
+  HOTEL_SERVICE_PORT: "8082"
+  BOOKING_SERVICE_HOST: booking-service
+  BOOKING_SERVICE_PORT: "8083"
+  PAYMENT_SERVICE_HOST: payment-service
+  PAYMENT_SERVICE_PORT: "8084"
+  LOYALTY_SERVICE_HOST: loyalty-service
+  LOYALTY_SERVICE_PORT: "8085"
+  REPORT_SERVICE_HOST: report-service
+  REPORT_SERVICE_PORT: "8086"
+

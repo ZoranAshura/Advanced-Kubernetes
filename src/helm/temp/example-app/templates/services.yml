@@ -1,0 +1,126 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: session-service
+  name: session-service
+spec:
+  ports:
+  - port: 8081
+    protocol: TCP
+    targetPort: 8081
+  selector:
+    run: session-service
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: hotel-service
+  name: hotel-service
+spec:
+  ports:
+  - port: 8082
+    protocol: TCP
+    targetPort: 8082
+  selector:
+    run: hotel-service
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: booking-service
+  name: booking-service
+spec:
+  ports:
+  - port: 8083
+    protocol: TCP
+    targetPort: 8083
+  selector:
+    run: booking-service
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: payment-service
+  name: payment-service
+spec:
+  ports:
+  - port: 8084
+    protocol: TCP
+    targetPort: 8084
+  selector:
+    run: payment-service
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: loyalty-service
+  name: loyalty-service
+spec:
+  ports:
+  - port: 8085
+    protocol: TCP
+    targetPort: 8085
+  selector:
+    run: loyalty-service
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: report-service
+  name: report-service
+spec:
+  ports:
+  - port: 8086
+    protocol: TCP
+    targetPort: 8086
+  selector:
+    run: report-service
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: gateway-service
+  name: gateway-service
+spec:
+  ports:
+  - port: 8087
+    protocol: TCP
+    targetPort: 8087
+  selector:
+    run: gateway-service
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: message-queue
+  name: message-queue
+spec:
+  ports:
+  - port: 5672
+    protocol: TCP
+    targetPort: 5672
+  selector:
+    run: message-queue
